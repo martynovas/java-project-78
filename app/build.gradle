@@ -25,3 +25,9 @@ test {
 compileJava {
     options.release = 17
 }
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
