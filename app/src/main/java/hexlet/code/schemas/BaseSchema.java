@@ -9,12 +9,12 @@ import java.util.Set;
 public abstract class BaseSchema {
     protected Set<Restrection> restrections = new LinkedHashSet<>();
 
-    public BaseSchema required() {
+    protected BaseSchema required() {
         restrections.add(Objects::nonNull);
         return this;
     }
 
-    public boolean isValid(Object value) {
+    public final boolean isValid(Object value) {
         for (var r : restrections) {
             if (!r.check(value)) {
                 return false;
