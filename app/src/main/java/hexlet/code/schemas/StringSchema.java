@@ -6,7 +6,7 @@ public class StringSchema extends BaseSchema {
     private int minLength;
     private String contains;
 
-    StringSchema() {
+    public StringSchema() {
         restrections.add(v -> Objects.isNull(v) || v instanceof String);
     }
 

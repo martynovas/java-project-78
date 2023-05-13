@@ -6,7 +6,7 @@ public class NumberSchema extends BaseSchema {
     private int minValue;
     private int maxValue;
 
-    NumberSchema() {
+    public NumberSchema() {
         restrections.add(v -> Objects.isNull(v) || v instanceof Integer);
     }
 

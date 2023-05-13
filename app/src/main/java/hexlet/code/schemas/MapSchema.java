@@ -8,7 +8,7 @@ public class MapSchema extends BaseSchema {
 
     private Map<String, BaseSchema> shape;
 
-    MapSchema() {
+    public MapSchema() {
         restrections.add(v -> Objects.isNull(v) || v instanceof Map<?, ?>);
     }
 
