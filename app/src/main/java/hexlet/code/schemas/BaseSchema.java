@@ -6,7 +6,7 @@ import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class BaseSchema {
+public abstract class BaseSchema {
     protected Set<Restrection> restrections = new LinkedHashSet<>();
 
     public BaseSchema required() {

@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class NumberSchemaTest {
+public final class NumberSchemaTest {
     private NumberSchema schema;
 
     @BeforeEach
