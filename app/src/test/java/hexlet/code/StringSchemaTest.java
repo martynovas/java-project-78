@@ -35,7 +35,7 @@ public class StringSchemaTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    void shouldFailRequieValidationWithNullAndEmpty(String value) {
+    void shouldFailRequireValidationWithNullAndEmpty(String value) {
         assertThat(
                 schema.required().isValid(value)
         ).isFalse();
