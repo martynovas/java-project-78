@@ -10,7 +10,7 @@ public abstract class BaseSchema {
     protected Set<Restrection> restrections = new LinkedHashSet<>();
 
     /**
-     * Method add to schema required validation
+     * Method add to schema required validation.
      * @return this object
      */
     protected BaseSchema required() {
