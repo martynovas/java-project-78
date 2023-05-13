@@ -1,5 +1,7 @@
 package hexlet.code;
 
+import hexlet.code.schemas.BaseSchema;
+import hexlet.code.schemas.MapSchema;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

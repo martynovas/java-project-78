@@ -1,4 +1,6 @@
-package hexlet.code;
+package hexlet.code.schemas;
+
+import hexlet.code.Restrection;
 
 import java.util.LinkedHashSet;
 import java.util.Objects;
