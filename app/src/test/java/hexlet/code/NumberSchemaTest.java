@@ -20,9 +20,20 @@ public class NumberSchemaTest {
     }
 
     @Test
+    void shouldPassWithValueNull() {
+        assertThat(
+                schema.isValid(null)
+        ).isTrue();
+    }
+
+    @Test
     void shouldFailWithValueNotNumber() {
-        assertThat(schema.isValid("Hello")).isFalse();
-        assertThat(schema.isValid(BigDecimal.ONE)).isFalse();
+        assertThat(
+                schema.isValid("Hello")
+        ).isFalse();
+        assertThat(
+                schema.isValid(BigDecimal.ONE)
+        ).isFalse();
     }
 
     @ParameterizedTest

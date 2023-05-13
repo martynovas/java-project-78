@@ -20,9 +20,20 @@ public class StringSchemaTest {
     }
 
     @Test
+    void shouldPassWithValueNull() {
+        assertThat(
+                schema.isValid(null)
+        ).isTrue();
+    }
+
+    @Test
     void shouldFailWithValueNotString() {
-        assertThat(schema.isValid(5)).isFalse();
-        assertThat(schema.isValid(BigDecimal.ONE)).isFalse();
+        assertThat(
+                schema.isValid(5)
+        ).isFalse();
+        assertThat(
+                schema.isValid(BigDecimal.ONE)
+        ).isFalse();
     }
 
     @ParameterizedTest
