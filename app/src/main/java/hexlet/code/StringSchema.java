@@ -19,13 +19,13 @@ public class StringSchema extends BaseSchema {
 
     public StringSchema minLength(int value) {
         minLength = value;
-        restrections.add(v -> ((String) v).length() >= minLength);
+        restrections.add(v -> Objects.isNull(v) || ((String) v).length() >= minLength);
         return this;
     }
 
     public StringSchema contains(String value) {
         contains = value;
-        restrections.add(v -> ((String) v).contains(contains));
+        restrections.add(v -> Objects.isNull(v) || ((String) v).contains(contains));
         return this;
     }
 

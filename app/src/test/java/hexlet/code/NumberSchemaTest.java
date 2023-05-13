@@ -54,7 +54,8 @@ public class NumberSchemaTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 1200})
-    void shouldPassPositiveValidation(int value) {
+    @NullSource
+    void shouldPassPositiveValidation(Integer value) {
         assertThat(
                 schema.positive().isValid(value)
         ).isTrue();
@@ -70,7 +71,8 @@ public class NumberSchemaTest {
 
     @ParameterizedTest
     @ValueSource(ints = {-3, -1, 0, 1, 10})
-    void shouldPassRangeValidation(int value) {
+    @NullSource
+    void shouldPassRangeValidation(Integer value) {
         assertThat(
                 schema.range(-3, 10).isValid(value)
         ).isTrue();
@@ -78,7 +80,7 @@ public class NumberSchemaTest {
 
     @ParameterizedTest
     @ValueSource(ints = {-10, -4, 11, 1000})
-    void shouldFailRabgeValidation(int value) {
+    void shouldFailRangeValidation(int value) {
         assertThat(
                 schema.range(-3, 10).isValid(value)
         ).isFalse();

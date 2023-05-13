@@ -17,14 +17,14 @@ public class NumberSchema extends BaseSchema {
     }
 
     public NumberSchema positive() {
-        restrections.add(v -> ((int) v) > 0);
+        restrections.add(v -> Objects.isNull(v) || ((int) v) > 0);
         return this;
     }
 
     public NumberSchema range(int min, int max) {
         minValue = min;
         maxValue = max;
-        restrections.add(v -> ((int) v) >= minValue && ((int) v) <= maxValue);
+        restrections.add(v -> Objects.isNull(v) ||  ((int) v) >= minValue && ((int) v) <= maxValue);
         return this;
     }
 }
