@@ -4,12 +4,8 @@ import java.util.Map;
 import java.util.Objects;
 
 public final class MapSchema extends BaseSchema {
-    private int size;
-
-    private Map<String, BaseSchema> shape;
-
     public MapSchema() {
-        restrections.add(v -> Objects.isNull(v) || v instanceof Map<?, ?>);
+        predicates.add(v -> Objects.isNull(v) || v instanceof Map<?, ?>);
     }
 
     @Override
@@ -19,18 +15,15 @@ public final class MapSchema extends BaseSchema {
     }
 
     public MapSchema sizeof(int value) {
-        size = value;
-        restrections.add(v -> Objects.isNull(v) || ((Map) v).size() == value);
+        predicates.add(v -> Objects.isNull(v) || ((Map) v).size() == value);
         return this;
     }
 
     public MapSchema shape(Map<String, BaseSchema> value) {
-        shape = value;
-
-        restrections.add(m -> {
+        predicates.add(m -> {
             if (Objects.nonNull(m)) {
                 for (var e : ((Map<?, ?>) m).entrySet()) {
-                    BaseSchema schema = shape.get(e.getKey());
+                    BaseSchema schema = value.get(e.getKey());
                     if (Objects.nonNull(schema)) {
                         if (!schema.isValid(e.getValue())) {
                             return false;

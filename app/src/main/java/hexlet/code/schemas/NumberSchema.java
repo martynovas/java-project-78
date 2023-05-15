@@ -3,11 +3,8 @@ package hexlet.code.schemas;
 import java.util.Objects;
 
 public final class NumberSchema extends BaseSchema {
-    private int minValue;
-    private int maxValue;
-
     public NumberSchema() {
-        restrections.add(v -> Objects.isNull(v) || v instanceof Integer);
+        predicates.add(v -> Objects.isNull(v) || v instanceof Integer);
     }
 
     @Override
@@ -17,14 +14,12 @@ public final class NumberSchema extends BaseSchema {
     }
 
     public NumberSchema positive() {
-        restrections.add(v -> Objects.isNull(v) || ((int) v) > 0);
+        predicates.add(v -> Objects.isNull(v) || ((int) v) > 0);
         return this;
     }
 
     public NumberSchema range(int min, int max) {
-        minValue = min;
-        maxValue = max;
-        restrections.add(v -> Objects.isNull(v) ||  ((int) v) >= minValue && ((int) v) <= maxValue);
+        predicates.add(v -> Objects.isNull(v) || ((int) v) >= min && ((int) v) <= max);
         return this;
     }
 }

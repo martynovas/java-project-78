@@ -3,29 +3,24 @@ package hexlet.code.schemas;
 import java.util.Objects;
 
 public final class StringSchema extends BaseSchema {
-    private int minLength;
-    private String contains;
-
     public StringSchema() {
-        restrections.add(v -> Objects.isNull(v) || v instanceof String);
+        predicates.add(v -> Objects.isNull(v) || v instanceof String);
     }
 
     @Override
     public StringSchema required() {
         super.required();
-        restrections.add(v -> (!(((String) v).isEmpty() && ((String) v).isBlank())));
+        predicates.add(v -> (!(((String) v).isEmpty() && ((String) v).isBlank())));
         return this;
     }
 
     public StringSchema minLength(int value) {
-        minLength = value;
-        restrections.add(v -> Objects.isNull(v) || ((String) v).length() >= minLength);
+        predicates.add(v -> Objects.isNull(v) || ((String) v).length() >= value);
         return this;
     }
 
     public StringSchema contains(String value) {
-        contains = value;
-        restrections.add(v -> Objects.isNull(v) || ((String) v).contains(contains));
+        predicates.add(v -> Objects.isNull(v) || ((String) v).contains(value));
         return this;
     }
 
