@@ -21,6 +21,21 @@ public final class StringSchemaTest {
     }
 
     @Test
+    void test() {
+        Object o = BigDecimal.ONE;
+
+        System.out.println(
+                (new Validator()).string().minLength(10).isValid(BigDecimal.ONE)
+        );
+
+        System.out.println(
+                (new Validator()).string().minLength(10).isValid(null)
+        );
+
+
+    }
+
+    @Test
     void shouldPassWithValueNull() {
         assertThat(
                 schema.isValid(null)
@@ -28,12 +43,12 @@ public final class StringSchemaTest {
     }
 
     @Test
-    void shouldFailWithValueNotString() {
+    void shouldFailRequireValidationWithValueNotString() {
         assertThat(
-                schema.isValid(5)
+                schema.required().isValid(5)
         ).isFalse();
         assertThat(
-                schema.isValid(BigDecimal.ONE)
+                schema.required().isValid(BigDecimal.ONE)
         ).isFalse();
     }
 

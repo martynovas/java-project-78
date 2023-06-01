@@ -1,34 +1,29 @@
 package hexlet.code.schemas;
 
 import java.util.Map;
-import java.util.Objects;
 
 public final class MapSchema extends BaseSchema {
     public MapSchema() {
-        predicates.add(v -> Objects.isNull(v) || v instanceof Map<?, ?>);
+        clazz = Map.class;
     }
 
-    @Override
     public MapSchema required() {
-        super.required();
+        isRequeired = true;
         return this;
     }
 
     public MapSchema sizeof(int value) {
-        predicates.add(v -> Objects.isNull(v) || ((Map) v).size() == value);
+        required();
+        predicates.add(v -> ((Map) v).size() == value);
         return this;
     }
 
     public MapSchema shape(Map<String, BaseSchema> value) {
+        required();
         predicates.add(m -> {
-            if (Objects.nonNull(m)) {
-                for (var e : ((Map<?, ?>) m).entrySet()) {
-                    BaseSchema schema = value.get(e.getKey());
-                    if (Objects.nonNull(schema)) {
-                        if (!schema.isValid(e.getValue())) {
-                            return false;
-                        }
-                    }
+            for (var e : value.entrySet()) {
+                if (!e.getValue().isValid(((Map<?, ?>) m).get(e.getKey()))) {
+                    return false;
                 }
             }
 

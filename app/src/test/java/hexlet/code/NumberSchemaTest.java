@@ -28,12 +28,12 @@ public final class NumberSchemaTest {
     }
 
     @Test
-    void shouldFailWithValueNotNumber() {
+    void shouldFailRequireValidationWithValueNotNumber() {
         assertThat(
-                schema.isValid("Hello")
+                schema.required().isValid("Hello")
         ).isFalse();
         assertThat(
-                schema.isValid(BigDecimal.ONE)
+                schema.required().isValid(BigDecimal.ONE)
         ).isFalse();
     }
 
@@ -47,7 +47,7 @@ public final class NumberSchemaTest {
 
     @ParameterizedTest
     @NullSource
-    void shouldFailRequireValidationWithNullAndEmpty(Integer value) {
+    void shouldFailRequireValidationWithNull(Integer value) {
         assertThat(
                 schema.required().isValid(value)
         ).isFalse();
