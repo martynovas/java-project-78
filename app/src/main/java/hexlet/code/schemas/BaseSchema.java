@@ -11,7 +11,7 @@ public abstract class BaseSchema {
     protected Class clazz;
 
     public final boolean isValid(Object value) {
-        if (value == null || !clazz.isInstance(value)){
+        if (value == null || !clazz.isInstance(value)) {
             return !isRequeired;
         } else {
             for (var r : predicates) {

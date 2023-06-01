@@ -1,7 +1,7 @@
 package hexlet.code.schemas;
 
 public final class NumberSchema extends BaseSchema {
-    public NumberSchema(){
+    public NumberSchema() {
         clazz = Integer.class;
     }
     public NumberSchema required() {
