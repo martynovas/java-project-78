@@ -6,7 +6,7 @@ public final class StringSchema extends BaseSchema {
     }
 
     public StringSchema required() {
-        isRequeired = true;
+        requeired = true;
         predicates.add(v -> !((String) v).isEmpty() && !((String) v).isBlank());
         return this;
     }

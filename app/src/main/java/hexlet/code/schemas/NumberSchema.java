@@ -5,7 +5,7 @@ public final class NumberSchema extends BaseSchema {
         clazz = Integer.class;
     }
     public NumberSchema required() {
-        isRequeired = true;
+        requeired = true;
         return this;
     }
 
